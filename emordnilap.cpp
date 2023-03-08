@@ -117,9 +117,28 @@ bool is_palindrome(const string &s){
 	return true;
 }
 
+ll calcFactorial (ll n){
+	ll answer = 1;
+
+	for(ll i = 1; i <= n; i++){
+		answer *= i;
+		answer %= mod;
+	}
+	return answer;
+}
+
 void kakashi_of_the_Sharingan(){
 	//Write Your code here;
-	
+	ll n;
+	cin >> n;
+
+	ll answer = (ll) n * (n - 1);
+	debug(answer);
+	answer %= mod;
+	debug(answer);
+	answer = (answer * calcFactorial(n)) % mod;
+	debug(answer);
+	cout << answer << endl;
 }
 
 
@@ -132,8 +151,8 @@ int main() {
 		freopen("Error.txt", "w", stderr);
 	#endif
 
-	int t = 1;
-	// cin >> t;
+	int t;
+	cin >> t;
 	
 	while(t--){
 		kakashi_of_the_Sharingan();
