@@ -34,7 +34,15 @@ using namespace std;
 #define Yes "Yes"
 #define NO "NO"
 #define No "No"
-const int mod = 1'000'000'007;
+#define vecR(v) v.begin(), v.end()
+#define rVec(v) v.begin(), v.end()
+#define loop(i, n) for(int i = 0; i < n; i++)
+#define loopL(i, n) for(long long i = 0; i < n; i++)
+#define loopREV(i, m, n) for(int i = n; i>= m; i--)
+
+#define Copy ios_base::sync_with_stdio(0);
+#define Ninja cin.tie(NULL);
+#define Kakashi cout.tie(NULL);
 
 #ifndef ONLINE_JUDGE
 #define debug(x) cerr << #x <<" "; _print(x); cerr << endl;
@@ -117,26 +125,49 @@ bool is_palindrome(const string &s){
 	return true;
 }
 
-void kakashi_of_the_Sharingan(){
+/*
+Hatake Kakashi is a shinobi of konohagakure's Hatake clan. The son of the 
+Konoha's White Fang. Famed as Kakashi of the Sharingan(Sharingan no Kakashi). 
+He is also the sixth hokage.
+He is reputed to have copied over a thousand techniques and which led to his 
+moniker as "Copy Ninja Kakashi" 
+*/
+
+const int mod = 1'000'000'007;
+
+void Kakashi_of_the_Sharingan(){
 	//Write Your code here;
-	
+	int n = 50, m = 20;
+	ll nn = 100;
+	loop(i, n){
+		cout << i + 1 << " ";
+	}
+	cout << endl << endl;
+	cout << "hirudora" << endl << endl;
+	loopREV(i, m, n){
+		cout << i << " ";
+	}
+	cout << endl << endl;
+
+	loopL(i, nn){
+		cout << i + 1 << " ";
+	}
+	cout << endl << endl;
 }
 
 
 int main() {
-	ios_base::sync_with_stdio(0);
-	cin.tie(0);
-	cout.tie(0);
+	Copy Ninja Kakashi
 
 	#ifndef ONLINE_JUDGE
 		freopen("Error.txt", "w", stderr);
 	#endif
 
-	int t = 1;
-	// cin >> t;
+	int t;
+	cin >> t;
 	
 	while(t--){
-		kakashi_of_the_Sharingan();
+		Kakashi_of_the_Sharingan();
 	}
 	
 	return 0;

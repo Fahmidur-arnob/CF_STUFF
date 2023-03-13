@@ -117,9 +117,37 @@ bool is_palindrome(const string &s){
 	return true;
 }
 
+/*
+Hatake Kakashi is a shinobi of konohagakure's Hatake clan. The son of the 
+Konoha's White Fang. Famed as Kakashi of the Sharingan(Sharingan no Kakashi). 
+He is also the sixth hokage.
+He is reputed to have copied over a thousand techniques and which led to his 
+moniker as "Copy Ninja Kakashi" 
+But more than that he is KAKASHI_SENSEI.
+*/
+
+
 void kakashi_of_the_Sharingan(){
 	//Write Your code here;
-	cout << "HELLO " << endl;
+	int n, m;
+	cin >> n >> m;
+	debug(n);
+	debug(m);
+
+	vector<int> arr;
+
+	for(int i = m; i <= n; i++){
+		arr.pb(i);
+	}
+	for(int i = n - 1; i >= m + 1; i--){
+		arr.pb(i);
+	}
+	cout << arr.size() << endl;
+	for(int i = 0; i < arr.size(); i++){
+		cout<<arr[i] << " ";
+		debug(arr);
+	}
+	cout << endl;
 }
 
 
