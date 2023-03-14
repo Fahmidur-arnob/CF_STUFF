@@ -1,4 +1,19 @@
-#include<bits/stdc++.h>
+#include<algorithm>
+#include<array>
+#include<bitset>
+#include<cassert>
+#include<chrono>
+#include<cmath>
+#include<cstring>
+#include<functional>
+#include<iomanip>
+#include<iostream>
+#include<map>
+#include<numeric>
+#include<queue>
+#include<random>
+#include<set>
+#include<vector>
 using namespace std;
 
 #define PI 3.1415926535897932384626
@@ -122,7 +137,24 @@ const int mod = 1'000'000'007;
 
 void Kakashi_of_the_Sharingan(){
 	//Write Your code here;
-	
+	int n;
+    cin >> n;
+    vector<ll> arr(n);
+
+    ll sum = 0;
+    ll negs = 0;
+    loop(i, n){
+        cin >> arr[i];
+
+        if(arr[i] < 0){
+            ++negs;
+            arr[i] = -arr[i];
+        }
+        sum += arr[i];
+    }
+    sort(vecR(arr));
+    if(negs & 1) sum -= 2 * arr[0];
+    cout << sum << endl;
 }
 
 

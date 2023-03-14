@@ -122,7 +122,41 @@ const int mod = 1'000'000'007;
 
 void Kakashi_of_the_Sharingan(){
 	//Write Your code here;
-	
+	ll n;
+	cin >> n;
+
+	string s = to_string(n);
+	string x = "", y = "";
+
+	bool ok = false;
+
+	for(auto character : s){
+		if(character == '0' || character == '2' ||
+			character == '4' || character == '6' || character == '8'){
+			ll temp = character - '0';
+			temp /= 2;
+			x += temp + '0';
+			y += temp + '0';
+		}
+		else{
+			ll temp = character - '0';
+
+			temp /= 2;
+			if(ok){
+				x += temp + '0';
+				y += temp + 1 + '0';
+				ok = false;
+			}
+			else{
+				x += temp + 1 + '0';
+				y += temp + '0';
+				ok = true;
+			}
+		}
+	}
+	int xx = stoi(x);
+	int yy = stoi(y);
+	cout << xx << " " << yy << endl;
 }
 
 

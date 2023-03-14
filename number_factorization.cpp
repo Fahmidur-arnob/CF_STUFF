@@ -122,7 +122,38 @@ const int mod = 1'000'000'007;
 
 void Kakashi_of_the_Sharingan(){
 	//Write Your code here;
-	
+	ll n, c = 0, answer = 0;
+	cin >> n;
+
+	map<ll, ll> arr;
+	for(ll i = 2; i * i <= n; i++){
+		c = 0;
+
+		while(n % i == 0){
+			c++;
+			n /= i;
+			if(!arr.count(c)){
+				arr[c] = i;
+			}
+			else{
+				arr[c] *= i;
+			}
+		}
+	}
+	if(n != 1){
+		if(!arr.count(1)){
+			arr[1] = n;
+		}
+		else{
+			arr[1] *= n;
+		}
+	}
+	map<ll, ll> :: iterator it;
+
+	for(it = arr.begin(); it != arr.end(); it++){
+		answer += it->second;
+	}
+	cout << answer << endl;
 }
 
 

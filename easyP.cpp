@@ -122,7 +122,29 @@ const int mod = 1'000'000'007;
 
 void Kakashi_of_the_Sharingan(){
 	//Write Your code here;
-	
+	int n, count = 0; cin >> n;
+    string s; cin >> s;
+
+    int len = s.length();
+
+    loop(i, len){
+    	if(s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u'){
+    		count = 0;
+    	}
+    	else{
+    		count++;
+    	}
+    	if(count == 4){
+    		break;
+    	}
+    }
+    debug(count);
+    if(count == 4){
+    	cout << NO << endl;
+    }
+    else{
+    	cout << YES << endl;
+    }
 }
 
 
