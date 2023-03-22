@@ -22,6 +22,7 @@ using namespace std;
 #define vecR(v) v.begin(), v.end()
 #define rVec(v) v.begin(), v.end()
 #define loop(i, n) for(int i = 0; i < n; i++)
+#define loopE(i, n) for(int i = 1; i <= n; i++)
 #define loopL(i, n) for(long long i = 0; i < n; i++)
 #define loopREV(i, m, n) for(int i = n; i>= m; i--)
 
@@ -56,58 +57,58 @@ template <class T, class V> void _print(map <T, V> v) {cerr << "[ "; for (auto i
 
 
 int lowComMulti(int a, int b){
-	return (a / __gcd(a, b) * b);
+    return (a / __gcd(a, b) * b);
 }
 
 //prime num till n; it takes any number and prints all the prime till that num;
 bool isPrime(int n){
-	if(n <= 1) return false;
-	if(n <= 3) return true;
+    if(n <= 1) return false;
+    if(n <= 3) return true;
 
-	//this is checked so that we can skip the middle five number in below loop;
-	if(n % 2 == 0 || n % 3 == 0) return false;
+    //this is checked so that we can skip the middle five number in below loop;
+    if(n % 2 == 0 || n % 3 == 0) return false;
 
-	for(int i = 5; i * i <= n; i = i+6){
-		if(n % i == 0 || n % (i + 2) == 0){
-			return false;
-		}
-	}
-	return true;
+    for(int i = 5; i * i <= n; i = i+6){
+        if(n % i == 0 || n % (i + 2) == 0){
+            return false;
+        }
+    }
+    return true;
 }
 
 void printTheIsPrimeFunction(int n){
-	for(int i = 2; i <= n; i++){
-		if(isPrime(i)){
-			cout << i << " " << endl;
-		}
-	}
+    for(int i = 2; i <= n; i++){
+        if(isPrime(i)){
+            cout << i << " " << endl;
+        }
+    }
 }
 
 bool primeFinder(int n){
-	int m = 0;
-	int flag = 0;
-	m = n / 2;
-	if(n == 0 || n == 1){
-		return false;
-	}
-	else{
-		for(int i = 2; i <= m; i++){
-			if(n % i == 0)
-				return false;
-		}
-		return true;
-	}
-	//1 is true
-	//0 is false
+    int m = 0;
+    int flag = 0;
+    m = n / 2;
+    if(n == 0 || n == 1){
+        return false;
+    }
+    else{
+        for(int i = 2; i <= m; i++){
+            if(n % i == 0)
+                return false;
+        }
+        return true;
+    }
+    //1 is true
+    //0 is false
 }
 
 bool is_palindrome(const string &s){
-	for(int a = 0, b = int(s.size()) - 1; a < b; a++, b--){
-		if(s[a] != s[b]){
-			return false;
-		}
-	}
-	return true;
+    for(int a = 0, b = int(s.size()) - 1; a < b; a++, b--){
+        if(s[a] != s[b]){
+            return false;
+        }
+    }
+    return true;
 }
 
 /*
@@ -121,24 +122,46 @@ moniker as "Copy Ninja Kakashi"
 const int mod = 1'000'000'007;
 
 void Kakashi_of_the_Sharingan(){
-	//Write Your code here;
-	cout << "HELLO " << endl;
+    //Write Your code here;
+    ll n;
+    cin >> n;
+    ll arr[n];
+    loopL(i, n){
+        cin >> arr[i];
+    }
+    sort(arr, arr + n);
+
+    ll answer = 1;
+
+    bool ok = arr[0] > 1;
+    if(ok){
+        cout<< NO << endl;return;
+    }
+    for(ll i = 1; i < n; i++){
+        bool ok = arr[i] <= answer;
+        if(ok){
+            answer += arr[i];continue;
+        }
+        cout << NO << endl;
+        return;
+    }
+    cout << YES << endl;
 }
 
 
 int main() {
-	Copy Ninja Kakashi
+    Copy Ninja Kakashi
 
-	#ifndef ONLINE_JUDGE
-		freopen("Error.txt", "w", stderr);
-	#endif
+    #ifndef ONLINE_JUDGE
+        freopen("Error.txt", "w", stderr);
+    #endif
 
-	int t = 1;
-	// cin >> t;
-	
-	while(t--){
-		Kakashi_of_the_Sharingan();
-	}
-	
-	return 0;
+    int t;
+    cin >> t;
+    
+    while(t--){
+        Kakashi_of_the_Sharingan();
+    }
+    
+    return 0;
 }

@@ -22,6 +22,7 @@ using namespace std;
 #define vecR(v) v.begin(), v.end()
 #define rVec(v) v.begin(), v.end()
 #define loop(i, n) for(int i = 0; i < n; i++)
+#define loopE(i, n) for(int i = 1; i <= n; i++)
 #define loopL(i, n) for(long long i = 0; i < n; i++)
 #define loopREV(i, m, n) for(int i = n; i>= m; i--)
 
@@ -122,7 +123,27 @@ const int mod = 1'000'000'007;
 
 void Kakashi_of_the_Sharingan(){
 	//Write Your code here;
-	cout << "HELLO " << endl;
+	int n;
+	cin >> n;
+	ll arr[n];
+	loop(i, n){
+		cin >> arr[i];
+	}
+
+	ll answer = 0;
+	multiset<int, greater<int>> ms; 
+	loopL(i, n){
+		if(arr[i] != 0){
+			ms.insert(arr[i]);
+		}
+		else{
+			if(ms.size() != 0){
+				answer += *ms.begin();
+				ms.erase(ms.begin());
+			}
+		}
+	}
+	cout << answer << endl;
 }
 
 
@@ -133,8 +154,8 @@ int main() {
 		freopen("Error.txt", "w", stderr);
 	#endif
 
-	int t = 1;
-	// cin >> t;
+	int t;
+	cin >> t;
 	
 	while(t--){
 		Kakashi_of_the_Sharingan();

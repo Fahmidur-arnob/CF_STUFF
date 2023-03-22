@@ -22,6 +22,7 @@ using namespace std;
 #define vecR(v) v.begin(), v.end()
 #define rVec(v) v.begin(), v.end()
 #define loop(i, n) for(int i = 0; i < n; i++)
+#define loopE(i, n) for(int i = 1; i <= n; i++)
 #define loopL(i, n) for(long long i = 0; i < n; i++)
 #define loopREV(i, m, n) for(int i = n; i>= m; i--)
 
@@ -122,7 +123,44 @@ const int mod = 1'000'000'007;
 
 void Kakashi_of_the_Sharingan(){
 	//Write Your code here;
-	cout << "HELLO " << endl;
+	ll l, r, x, a, b;
+	cin >> l >> r >> x >> a >> b;
+
+	int d1 = abs(a - l);
+	int d2 = abs(r - a);
+	int d3 = abs(b - l);
+	int d4 = abs(r - b);
+
+	if(a == b){
+		cout << 0 << endl;
+	}
+	else if(abs(a - b) >= x){
+		cout << 1 << endl;
+	}
+	else if((d1 < x && d2 < x) || (d3 < x && d4 < x)){
+		cout << -1 << endl;
+	}
+	else {
+		if(d1 < x){
+			if(d4 >= x){
+				cout << 2 << endl;
+			}
+			else{
+				cout << 3 << endl;
+			}
+		}
+		else if(d2 < x){
+			if(d3 >= x){
+				cout << 2 << endl;
+			}
+			else{
+				cout << 3 << endl;
+			}
+		}
+		else{
+			cout << 2 << endl;
+		}
+	}
 }
 
 
@@ -133,8 +171,8 @@ int main() {
 		freopen("Error.txt", "w", stderr);
 	#endif
 
-	int t = 1;
-	// cin >> t;
+	int t;
+	cin >> t;
 	
 	while(t--){
 		Kakashi_of_the_Sharingan();

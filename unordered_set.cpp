@@ -22,6 +22,7 @@ using namespace std;
 #define vecR(v) v.begin(), v.end()
 #define rVec(v) v.begin(), v.end()
 #define loop(i, n) for(int i = 0; i < n; i++)
+#define loopE(i, n) for(int i = 1; i <= n; i++)
 #define loopL(i, n) for(long long i = 0; i < n; i++)
 #define loopREV(i, m, n) for(int i = n; i>= m; i--)
 
@@ -116,13 +117,43 @@ Konoha's White Fang. Famed as Kakashi of the Sharingan(Sharingan no Kakashi).
 He is also the sixth hokage.
 He is reputed to have copied over a thousand techniques and which led to his 
 moniker as "Copy Ninja Kakashi" 
+
+
+Given N string and Q queries. In each query you are given a string print yes if string is present else print no;
+
+N <= 10^6
+|S| <= 100
+Q <= 10 ^ 6
 */
 
 const int mod = 1'000'000'007;
 
 void Kakashi_of_the_Sharingan(){
 	//Write Your code here;
-	cout << "HELLO " << endl;
+	unordered_set<string> s;
+	int n;
+	cin >> n;
+
+	for(int i = 0; i < n; i++){
+		string str;
+		cin >> str;
+		s.insert(str);
+	}
+	// for(auto value : s){
+	// 	cout << value << endl;
+	// }
+	int q;
+	cin >> q;
+	while(q--){
+		string str;
+		cin >> str;
+		if(s.find(str) == s.end()){
+			cout << NO << endl;
+		}
+		else{
+			cout << YES << endl;
+		}
+	}
 }
 
 
@@ -134,7 +165,7 @@ int main() {
 	#endif
 
 	int t = 1;
-	// cin >> t;
+	// cin >> t; 
 	
 	while(t--){
 		Kakashi_of_the_Sharingan();

@@ -22,6 +22,7 @@ using namespace std;
 #define vecR(v) v.begin(), v.end()
 #define rVec(v) v.begin(), v.end()
 #define loop(i, n) for(int i = 0; i < n; i++)
+#define loopE(i, n) for(int i = 1; i <= n; i++)
 #define loopL(i, n) for(long long i = 0; i < n; i++)
 #define loopREV(i, m, n) for(int i = n; i>= m; i--)
 
@@ -122,7 +123,41 @@ const int mod = 1'000'000'007;
 
 void Kakashi_of_the_Sharingan(){
 	//Write Your code here;
-	cout << "HELLO " << endl;
+	ll n;
+	cin >> n;
+	string s;
+	cin >> s;
+	s = "0" + s + "0";
+
+	vector<ll> arr(n + 2, 0);
+
+	loopE(i, n){
+		cin >> arr[i];
+	}
+
+	ll answer = 0, cImprove = 0, pos = 0;
+
+	vector<ll> improve;
+
+	for(ll i = 0; i < n + 2; i++){
+		if(s[i] == '0'){
+			improve.pb(cImprove);
+			cImprove = 0; pos = i;
+		}
+		else{
+			cImprove = max(cImprove, arr[pos] - arr[i]);
+		}
+	}
+
+	for(ll i = 0; i < n + 2; i++){
+		if(s[i] == '1'){
+			answer += arr[i];
+		}
+	}
+	for(auto x : improve){
+		answer += x;
+	}
+	cout << answer << endl;
 }
 
 
@@ -133,8 +168,8 @@ int main() {
 		freopen("Error.txt", "w", stderr);
 	#endif
 
-	int t = 1;
-	// cin >> t;
+	int t;
+	cin >> t;
 	
 	while(t--){
 		Kakashi_of_the_Sharingan();

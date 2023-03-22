@@ -22,6 +22,7 @@ using namespace std;
 #define vecR(v) v.begin(), v.end()
 #define rVec(v) v.begin(), v.end()
 #define loop(i, n) for(int i = 0; i < n; i++)
+#define loopE(i, n) for(int i = 1; i <= n; i++)
 #define loopL(i, n) for(long long i = 0; i < n; i++)
 #define loopREV(i, m, n) for(int i = n; i>= m; i--)
 
@@ -120,9 +121,58 @@ moniker as "Copy Ninja Kakashi"
 
 const int mod = 1'000'000'007;
 
+
+/*
+task is as follows:
+	-> Select an int K > 1;
+	-> Split the array into K subsegments t;
+	-> Calculate the sum in each of K subsegments and write these sums to another array b(where the sum of the subsegments(l, r) is ∑rj=laj)
+	-> the final score of such a split will be __gcd(b1, b2, ..., bk);
+
+
+the task is to find such a partitions that the score is Maximum_Possible.
+
+†
+ A division of an array into k
+ subsegments is k
+ pairs of numbers (l1,r1),(l2,r2),…,(lk,rk)
+ such that li≤ri
+ and for every 1≤j≤k−1
+ lj+1=rj+1
+, also l1=1
+ and rk=n
+. These pairs represent the subsegments.
+
+‡
+ gcd(b1,b2,…,bk)
+ stands for the greatest common divisor (GCD) of the array b
+.
+*/
+
 void Kakashi_of_the_Sharingan(){
 	//Write Your code here;
-	cout << "HELLO " << endl;
+	ll n;
+	cin >> n;
+
+	vector<ll> arr(n);
+	vector<ll> prefix(n);
+	loopL(i, n){
+		cin >> arr[i];
+
+		if(i == 0){
+			prefix[i] = arr[i];
+		}
+		else{
+			prefix[i] = prefix[i - 1] + arr[i];
+		}
+	}
+	ll answer = 0;
+	for(int i = 1; i < n; i++){
+        ll okW = prefix[n - 1] - prefix[i - 1];
+        ll ok = __gcd(prefix[i - 1], okW);
+        answer = max(answer, ok);
+	}
+	cout << answer << endl;
 }
 
 
@@ -133,8 +183,8 @@ int main() {
 		freopen("Error.txt", "w", stderr);
 	#endif
 
-	int t = 1;
-	// cin >> t;
+	int t;
+	cin >> t;
 	
 	while(t--){
 		Kakashi_of_the_Sharingan();
