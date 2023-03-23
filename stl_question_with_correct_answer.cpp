@@ -19,7 +19,16 @@ using namespace std;
 #define Yes "Yes"
 #define NO "NO"
 #define No "No"
-const int mod = 1'000'000'007;
+#define vecR(v) v.begin(), v.end()
+#define rVec(v) v.begin(), v.end()
+#define loop(i, n) for(int i = 0; i < n; i++)
+#define loopE(i, n) for(int i = 1; i <= n; i++)
+#define loopL(i, n) for(long long i = 0; i < n; i++)
+#define loopREV(i, m, n) for(int i = n; i>= m; i--)
+
+#define Copy ios_base::sync_with_stdio(0);
+#define Ninja cin.tie(NULL);
+#define Kakashi cout.tie(NULL);
 
 #ifndef ONLINE_JUDGE
 #define debug(x) cerr << #x <<" "; _print(x); cerr << endl;
@@ -102,33 +111,60 @@ bool is_palindrome(const string &s){
 	return true;
 }
 
-void kakashi_of_the_Sharingan(){
+/*
+Hatake Kakashi is a shinobi of konohagakure's Hatake clan. The son of the 
+Konoha's White Fang. Famed as Kakashi of the Sharingan(Sharingan no Kakashi). 
+He is also the sixth hokage.
+He is reputed to have copied over a thousand techniques and which led to his 
+moniker as "Copy Ninja Kakashi" 
+*/
+
+const int mod = 1'000'000'007;
+
+/*
+"" jotogula bag er candies ase oigula set e raikkha dimu... set er last element hoise shob cheye maximum element;
+to oidare jotogula canides khaiese oine add kormu
+tarpor oi max er half tare abr insert koira dimu ""
+
+
+
+*/
+
+void Kakashi_of_the_Sharingan(){
 	//Write Your code here;
-	int k, n;cin >> k >> n;
+	ll n, k;
+	cin >> n >> k;
+	debug(n);debug(k);
 
-	int diff = 1;
-	vector<int> arr = {1};
+	multiset<ll> bags;
 
-	for(int i = 2; i <= k; i++){
-		int nxt = arr.back() + diff;
-		int remElement = n - nxt;
-		int remPlaces = k - i;
-
-		if(remElement >= remPlaces){
-			arr.pb(nxt);
-			diff++;
-		}
-		else arr.pb(arr.back() + 1);
+	loop(i, n){
+		ll candy_ct;
+		cin >> candy_ct;
+		bags.insert(candy_ct);
+		debug(bags);
 	}
-	for(auto it : arr) cout << it << " ";
-	cout << endl;
+
+	ll total_candies = 0;
+	loop(i, k){
+		//ei loop ei maximum amount er candy ber kormu r ki..last iterator ber korlei oita possible hobe to get the max amount candy;
+
+		auto last_it = (--bags.end());//eita first e assign hobe then decrement hobe;
+		// last_it--;oivabe kore eivabe -- korleo hbe || jeivabe dewa ase oivabe dileo hobe;maximum element found; 
+		ll candy_ct = *last_it;
+		total_candies += candy_ct;
+
+		//multiset e jodi erase korte hoy tokhon jodi value diye erase perform kori taile multiset shob gula duplicate value ow erase kore dibe; so iterator er maddhome erase operation korte hobe;
+
+		bags.erase(last_it);
+		bags.insert(candy_ct/2);
+	}
+	cout<< total_candies << endl;
 }
 
 
 int main() {
-	ios_base::sync_with_stdio(0);
-	cin.tie(0);
-	cout.tie(0);
+	Copy Ninja Kakashi
 
 	#ifndef ONLINE_JUDGE
 		freopen("Error.txt", "w", stderr);
@@ -138,7 +174,7 @@ int main() {
 	cin >> t;
 	
 	while(t--){
-		kakashi_of_the_Sharingan();
+		Kakashi_of_the_Sharingan();
 	}
 	
 	return 0;
